@@ -45,6 +45,11 @@ laravel-project/
             |-- MainTemplateController.php
             |-- AdminController.php
             |-- MainController.php
+    resources/
+    |-- views/
+        |-- masters/
+            |-- admin.blade.php
+            |-- main.blade.php
 
 ```
 
