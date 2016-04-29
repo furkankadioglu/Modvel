@@ -1,6 +1,8 @@
 # Modvel
 Modular Pattern &amp; Module Management for Laravel 5
 
+![alt tag](http://1.1m.yt/S1OTMoa.png)
+
 ## Installation
 
 The best way to install this package is through your terminal via Composer.
