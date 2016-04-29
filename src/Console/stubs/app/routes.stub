@@ -1,0 +1,20 @@
+<?php
+
+Route::group(array('module' => 'Dummy', 'middleware' =>  ['web', 'auth'], 'namespace' => 'App\Modules\Dummy\App\Http\Controllers'), function() {
+
+    Route::get('/admin/modules/Dummy', array('uses' => 'DummyAdminController@index', 'as' => 'admin.Dummy.index'));
+    Route::get('/admin/modules/Dummy/{id}/delete', array('uses' => 'DummyAdminController@destroy', 'as' => 'admin.Dummy.destroy'));
+    Route::get('/admin/modules/Dummy/{id}/edit', array('uses' => 'DummyAdminController@edit', 'as' => 'admin.Dummy.edit'));
+    Route::get('/admin/modules/Dummy/create', array('uses' => 'DummyAdminController@create', 'as' => 'admin.Dummy.create'));
+    Route::get('/admin/modules/Dummy/{id}', array('uses' => 'DummyAdminController@show', 'as' => 'admin.Dummy.show'));
+    Route::post('/admin/modules/Dummy/', array('uses' => 'DummyAdminController@store', 'as' => 'admin.Dummy.store'));
+});	
+
+
+Route::group(array('module' => 'Dummy', 'middleware' =>  ['web'], 'namespace' => 'App\Modules\Dummy\App\Http\Controllers'), function() {
+
+	// Resources
+    Route::resource('Dummy', 'DummyController');
+    Route::resource('DummyAPI', 'DummyApiController');
+
+});	

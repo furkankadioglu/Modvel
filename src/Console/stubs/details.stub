@@ -1,0 +1,19 @@
+<?php
+
+return [
+    'name' => 'Dummy',
+    'displayName' => 'Dummy',
+    'description' => '',
+    'icon' => 'fa fa-get-pocket',
+    'category' => 'General',
+    'creator' => 'Anonymous',
+    'customer' => 'General',
+    'adminNavigationLinks' => [
+    	'Yeni' => '/create',
+    	'Listele' => '/'
+    ],
+    'requiredModules' => [
+
+    ]
+
+];

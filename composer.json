@@ -1,0 +1,26 @@
+{
+    "name": "furkankadioglu/modvel",
+    "description": "Modular Pattern & Module Management for Laravel 5",
+    "keywords": ["laravel", "pattern", "modular", "modules", "structure", "Furkan", "Kadıoğlu", "l5module", "artisan", "generator"],
+    "homepage": "https://github.com/furkankadioglu/Modvel",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Furkan Kadıoğlu",
+            "email": "furkan.kadioglu@gmail.com"
+        }
+    ],
+  "require": {
+    "php": ">=5.5.9",
+    "illuminate/support": "5.*",
+    "chumper/zipper": "0.6.x",
+    "intervention/image": "^2.3",
+  },
+    "autoload": {
+        "psr-4": {
+            "furkankadioglu\\Modvel\\": "src/"
+        }
+    },
+     "minimum-stability": "stable"
+}

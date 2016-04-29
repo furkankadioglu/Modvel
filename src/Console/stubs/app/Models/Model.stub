@@ -1,0 +1,12 @@
+<?php namespace App\Modules\Dummy\App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Dummy extends Model {
+
+	//
+	protected $table = "Dummy";
+	public $timestamps = true;
+	protected $guarded = [];
+
+}
