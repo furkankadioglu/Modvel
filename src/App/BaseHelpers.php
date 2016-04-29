@@ -10,6 +10,8 @@ use App\Models\Photo;
 use App\Models\Video;
 use App\Models\Document;
 use App\Models\Audio;
+use App\Models\UploadedFile;
+use Zipper;
 
 class BaseHelpers {
 
@@ -68,11 +70,123 @@ class BaseHelpers {
 		return $modules;
 	}
 
+	public static function getModulesWithCategory()
+	{
+
+		$path = Config::get('modulemanagement.path');
+		$moduleCheck = Cache::get('modulesWithCategory');
+	   	$directories = "";
+	    $modules = [];
+	    $results = [];
+	    if($moduleCheck != 1)
+		{
+		    if(File::exists($path)) 
+		    {
+   			    $directories = array_map('basename', File::directories($path));
+		     	foreach($directories as $directory)
+		     	{
+					$modules[$directory] = BaseHelpers::readModule($directory);
+					$category = $modules[$directory]["category"];
+					$results[$category][$directory] = $modules[$directory];
+					//array_push($results[$category], $modules[$directory]);
+		     	}
+		     	if($modules == "[]")
+		     	{
+		     		die("ERROR");
+		     	}
+				$cacheModules = Cache::put('modulesWithCategory', '1', Config::get('modulemanagement.checkTime') * 3);
+				$cacheModulesList = Cache::put('modulesWithCategoryList', $results, Config::get('modulemanagement.checkTime') * 3);
+
+		     	return $results;
+		    }
+		}
+		$modules = Cache::get('modulesWithCategoryList');
+
+		return $modules;
+	}
+
+	public static function getModulesWithSearch($parametre1, $parametre2)
+	{
+
+		$path = Config::get('modulemanagement.path');
+		$moduleCheck = Cache::get($parametre1.$parametre2.'Search');
+	   	$directories = "";
+	    $modules = [];
+	    $results = [];
+	    if($moduleCheck != 1)
+		{
+		    if(File::exists($path)) 
+		    {
+   			    $directories = array_map('basename', File::directories($path));
+		     	foreach($directories as $directory)
+		     	{
+					$modules[$directory] = BaseHelpers::readModule($directory);
+					if($modules[$directory][$parametre1] == $parametre2)
+					{
+						$results[$directory] = $modules[$directory];
+					}
+		     	}
+		     	if($modules == "[]")
+		     	{
+		     		die("ERROR");
+		     	}
+				$cacheModules = Cache::put($parametre1.$parametre2.'Search', '1', Config::get('modulemanagement.checkTime') * 3);
+				$cacheModulesList = Cache::put($parametre1.$parametre2, $results, Config::get('modulemanagement.checkTime') * 3);
+
+		     	return $results;
+		    }
+		}
+		$modules = Cache::get($parametre1.$parametre2);
+
+		return $modules;
+	}
+
+	public static function createModule($data)
+	{
+		if(!is_null($data))
+		{	
+			$time = Carbon\Carbon::now()->timestamp;
+			$extension = $data->getClientOriginalExtension();
+			$mediaName = ($time.rand(5, 200000));
+			$fileName = $mediaName.".".$extension;
+			$data->move(public_path().'/uploads/modules/', $fileName);
+			$displayName = $mediaName;
+
+			$uploadedFile = UploadedFile::create([
+				'displayName' => $displayName,
+				'fileName' => $fileName,
+				'categoryName' => "UncategorizedModules",
+				'relId' => 0,
+			]);
+			$files = Zipper::make(public_path().'/uploads/modules/'.$fileName)->listFiles();
+			$export = Zipper::make(public_path().'/uploads/modules/'.$fileName)->extractTo(app_path().'/Modules');
+			$detailsFile = "";
+			foreach($files as $file)
+			{
+				//details.php
+				$detailsphp = substr($file, -11);
+				if($detailsphp == "details.php")
+				{
+					$detailsFile = $file;
+				}
+			}
+
+			if($detailsFile == "")
+			{
+				return redirect('/');
+			}
+			$path = include(app_path().'/Modules/'.$detailsFile);
+
+			return $path;
+		}
+	}
+
 	public static function readModule($modulename)
 	{
 	    $path = include(app_path().'/Modules/'.$modulename.'/details.php');
 	    return $path;
 	}
+
 
 	public static function addPhoto($data, $relationshipId = null, $categoryName = null, $displayName = null)
 	{
