@@ -81,6 +81,10 @@ laravel-project/
                     |-- default
                         |-- index.blade.php
                 |-- lang/
+                    |-- en
+                        |-- general.php
+                    |-- tr
+                        |-- general.php
             |-- Database/
                 |-- seeds/
                 |-- migrations/
