@@ -26,8 +26,7 @@ Getting to module config file and generators:
 php artisan vendor:publish
 ```
 
-Files
-
+###### Publish Files
 
 ```
 laravel-project/
@@ -55,3 +54,35 @@ laravel-project/
 
 ```
 
+###### Example: Test Module Files
+
+```
+laravel-project/
+    app/
+    |-- modules/
+        |-- Test
+            |-- details.php
+            |-- App/
+                |-- Controllers/
+                    |-- TestAdminController.php
+                    |-- TestApiController.php
+                    |-- TestController.php
+                |-- Middlewares/
+                |-- Models/
+                    |-- Test.php
+                |-- routes.php
+                |-- TestHelpers.php
+            |-- Config/
+            |-- Resources/
+                |-- views/
+                    |-- admin
+                        |-- default
+                            |-- index.blade.php
+                    |-- default
+                        |-- index.blade.php
+                |-- lang/
+            |-- Database/
+                |-- seeds/
+                |-- migrations/
+
+```

@@ -27,7 +27,7 @@ Modular sistem dosyalarını oluşturmak için, console'a şunu yazıyoruz:
 php artisan vendor:publish
 ```
 
-Hangi dosyalar geliyor?
+###### Publish ile hangi dosyalar geliyor?
 
 ```
 laravel-project/
@@ -55,6 +55,39 @@ laravel-project/
 
 ```
 
+###### Örnek: Bir "Test" modülü oluşturulduğunda oluşturulan dizinler ve dosyalar
+
+```
+laravel-project/
+    app/
+    |-- modules/
+        |-- Test
+            |-- details.php
+            |-- App/
+                |-- Controllers/
+                    |-- TestAdminController.php
+                    |-- TestApiController.php
+                    |-- TestController.php
+                |-- Middlewares/
+                |-- Models/
+                    |-- Test.php
+                |-- routes.php
+                |-- TestHelpers.php
+            |-- Config/
+            |-- Resources/
+                |-- views/
+                    |-- admin
+                        |-- default
+                            |-- index.blade.php
+                    |-- default
+                        |-- index.blade.php
+                |-- lang/
+            |-- Database/
+                |-- seeds/
+                |-- migrations/
+
+```
+
 ###### Dosyalar - Config > modulemanagement.php
 
 Config dosyasından genel ayarlar yapılıyor. Oluşturulan modüllerin cache'de tutulma süresi, dizin yolu, ana teması ve admin teması ayarları tutuluyor.
@@ -75,6 +108,7 @@ TemplateController dosyaları genel olarak view dosyalarına ve master bladelere
 
 Layoutları oluşturmanız için gereken bölüm burası. Sizin için iki tane hazır geliyor. Bir tanesi admin bölümünüz için, diğeri ise ziyaretçileriniz için.
 
+###### Example: Test Module Files
 
 
 
