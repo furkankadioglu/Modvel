@@ -25,29 +25,29 @@ class ModuleMakeCommand extends GeneratorCommand {
 
 	// Generate - Folders
 	public $folders = [
-		'App' => [
-			'Http' => [
-				'Controllers' => [],
-				'Middlewares' => []
+		'App'	=> 	[
+			'Http'	=>	[
+				'Controllers' 	=> 	[],
+				'Middlewares' 	=> 	[]
 			],
-			'Models' => []
+			'Models'	=> 	[]
 		],
-		'Config' => [],
-		'Resources' => [
-			'views' => [
-					'admin' => [
-						'default' => []
+		'Config'	=> 	[],
+		'Resources' => 	[
+			'views' => 	[
+				'admin'	=>	[
+					'default'	=>	[]
 					],
-					'default' => []
+					'default'	=> 	[]
 			],
 			'lang' => [
-				'tr' => [],
-				'en' => []
+				'tr' 	=> 	[],
+				'en' 	=> 	[]
 			]
 		],
-		'Database' => [
-			'seeds' => 		[],
-			'migrations' => []
+		'Database'		=> [
+			'seeds'			=>	[],
+			'migrations' 	=> 	[]
 		]
 	];
 
