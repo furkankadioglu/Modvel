@@ -64,6 +64,7 @@ class ModuleMakeCommand extends GeneratorCommand {
 		'helper.stub'			=> 'DummyHelpers.php',
 		'show.stub'				=> 'show.blade.php',
 		'edit.stub'				=> 'edit.blade.php',
+		'create.stub'			=> 'create.blade.php',
 		'destroy.stub'			=> 'destroy.blade.php'
 	];
 
