@@ -14,7 +14,7 @@ Add the following line to the `composer.json` file and fire `composer update`
 ```
 Once this operation is complete, simply add the service provider to your project's `config/app.php`
 
-#### Service Provider
+###### Service Provider
 ```
 furkankadioglu\Modvel\ModuleServiceProvider::class,
 ```
@@ -25,6 +25,11 @@ Getting to module config file and generators:
 ```
 php artisan vendor:publish
 ```
+
+### Commands
+
+- php artisan module:make
+- php artisan module:list 
 
 ###### Publish Files
 

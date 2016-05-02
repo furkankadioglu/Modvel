@@ -3,7 +3,7 @@ Laravel 5 için Moduler Pattern ve Modül Yönetimi
 
 ![alt tag](http://1.1m.yt/S1OTMoa.png)
 
-## Yükleme
+## Yükleme / Kurulum
 
 Tavsiye edilen yükleme yöntemi, composer aracılığıyla bu işlemi yapmanız.
 
@@ -15,7 +15,7 @@ Aşağıdaki satırı `composer.json` dosyasına ekledikten sonra consoledan `co
 
 Sonrasında Service Provider'ı tanıtmak gerekiyor, `config/app.php` dosyasını açıp providers kısmına alttaki satırı ekliyoruz.
 
-#### Service Provider
+###### Service Provider
 ```
 furkankadioglu\Modvel\ModuleServiceProvider::class,
 ```
@@ -26,6 +26,11 @@ Modular sistem dosyalarını oluşturmak için, console'a şunu yazıyoruz:
 ```
 php artisan vendor:publish
 ```
+
+### Komutlar
+
+- php artisan module:make
+- php artisan module:list 
 
 ###### Publish ile hangi dosyalar geliyor?
 
@@ -91,6 +96,8 @@ laravel-project/
                 |-- migrations/
 
 ```
+
+
 
 ###### Dosyalar - Config > modulemanagement.php
 
