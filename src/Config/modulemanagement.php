@@ -11,6 +11,8 @@ return [
 	
 	'path' => app_path('Modules'),
 
+	'apiPassword' => env('API_PASSWORD', '123456'),
+
 	'checkTime' => 30, // Minute 
 	
 	'modules' => 'App\Modules\\',

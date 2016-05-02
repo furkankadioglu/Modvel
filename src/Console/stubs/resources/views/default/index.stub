@@ -1,1 +1,3 @@
-Hello world.
+@foreach($datas as $data)
+	{{ $data }}
+@endforeach

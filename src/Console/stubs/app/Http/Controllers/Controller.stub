@@ -21,82 +21,49 @@ use App\Modules\Dummy\App\Models\Dummy;
 use App\Http\Controllers\MainTemplateController;
 class DummyController extends MainTemplateController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
-		return view("Dummy::default.index");
+		$datas = Dummy::orderBy('id', 'desc')->get();
+		return view("Dummy::default.index")
+		->with('datas', $datas);
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return view("Dummy::default.create");
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(Request $request)
-	{
-		$postCategory = $request->get('postCategory');
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  string  $id
-	 * @return Response
-	 */
 	public function show($id)
 	{
-		return view("Dummy::default.show")
-		->with('id', $id);	
+		$data = Dummy::find($id);
+		if($data != null)
+		{
+			return view("Dummy::default.show")
+			->with('id', $id)
+			->with('data', $data);	
+		}
+		return back();
 	}
 
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+	public function store(Request $request)
 	{
-		return view("Dummy::default.edit")
-		->with('id', $id);
+		return back();
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function destroy($id)
 	{
 		return view("Dummy::default.destroy")
 		->with('id', $id);
+	}
+
+	public function create()
+	{
+		return back();
+	}
+
+	public function update($id)
+	{
+		return back();
+	}
+
+	public function edit($id)
+	{
+		return back();
 	}
 
 }

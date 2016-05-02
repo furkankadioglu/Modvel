@@ -1,1 +1,5 @@
-Hello world.
+{{ $headName }}
+
+@foreach($datas as $data)
+	{{ print_r($data) }}
+@endforeach

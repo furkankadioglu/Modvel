@@ -21,6 +21,8 @@ use App\Modules\Dummy\App\Models\Dummy;
 use App\Http\Controllers\AdminTemplateController;
 class DummyAdminController extends AdminTemplateController {
 
+	public $headName = "Dummy";
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -28,7 +30,10 @@ class DummyAdminController extends AdminTemplateController {
 	 */
 	public function index()
 	{
-		return view("Dummy::admin.default.index");
+		$datas = Dummy::orderBy('id', 'desc')->get();
+		return view("Dummy::admin.default.index")
+		->with('datas', $datas)
+		->with('headName', $this->headName);
 	}
 
 	/**
@@ -38,7 +43,8 @@ class DummyAdminController extends AdminTemplateController {
 	 */
 	public function create()
 	{
-		return view("Dummy::admin.default.create");
+		return view("Dummy::admin.default.create")
+		->with('headName', $this->headName);
 	}
 
 	/**
@@ -49,6 +55,28 @@ class DummyAdminController extends AdminTemplateController {
 	public function store(Request $request)
 	{
 		$postCategory = $request->get('postCategory');
+
+		if($postCategory == "create")
+		{
+			$rules = array(
+				// variables
+			);
+
+			$validator = Validator::make($request->all(), $rules);
+
+			if($validator->fails()) 
+            {
+                return back();
+            }
+
+            $data = Dummy::create([
+            	// variables
+            ]);
+
+            return redirect("admin/modules/Dummy");
+		}
+
+		return back();
 	}
 
 	/**
@@ -59,7 +87,15 @@ class DummyAdminController extends AdminTemplateController {
 	 */
 	public function show($id)
 	{
-		return view("Dummy::admin.default.show");
+		$data = Dummy::find($id);
+		if($data != null)
+		{
+			return view("Dummy::admin.default.show")
+			->with('id', $id)
+			->with('data', $data)
+			->with('headName', $this->headName);
+		}
+		return back();
 	}
 
 	/**
@@ -70,8 +106,16 @@ class DummyAdminController extends AdminTemplateController {
 	 */
 	public function edit($id)
 	{
-		return view("Dummy::admin.default.edit")
-		->with('id', $id);
+		$data = Dummy::find($id);
+		if($data != null)
+		{
+			return view("Dummy::admin.default.edit")
+			->with('id', $id)
+			->with('data', $data)
+			->with('headName', $this->headName);
+		}
+		return back();
+		
 	}
 
 	/**
@@ -82,7 +126,25 @@ class DummyAdminController extends AdminTemplateController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules = array(
+				// variables
+			);
+
+		$validator = Validator::make($request->all(), $rules);
+
+		if($validator->fails()) 
+	    {
+	        return back();
+	    }
+
+	    $data = Dummy::find($id);
+	    if($data != null)
+	    {
+	    	// variables
+	    	$data->save();
+            return redirect("admin/modules/Dummy");
+	    }
+	    return back();
 	}
 
 	/**
@@ -93,9 +155,17 @@ class DummyAdminController extends AdminTemplateController {
 	 */
 	public function destroy($id)
 	{
+		$data = Dummy::find($id);
+		if($data != null)
+		{
+			$data->delete();
+			return view("Dummy::admin.default.destroy")
+			->with('id', $id)
+			->with('headName', $this->headName);
+		}
+		return back();
 
-		return view("Dummy::admin.default.destroy")
-		->with('id', $id);
+		
 	}
 
 }
