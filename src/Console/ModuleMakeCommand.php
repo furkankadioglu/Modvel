@@ -53,19 +53,20 @@ class ModuleMakeCommand extends GeneratorCommand {
 
 	// File Replacement
 	public $fileRenameRules = [
-		'AdminController.stub' 	=> 'DummyAdminController.php',
-		'ApiController.stub' 	=> 'DummyApiController.php',
-		'Controller.stub' 		=> 'DummyController.php',
-		'Model.stub' 			=> 'Dummy.php',
-		'general.stub'			=> 'general.php',
-		'index.stub' 			=> 'index.blade.php',
-		'routes.stub'			=> 'routes.php',
-		'details.stub'			=> 'details.php',
-		'helper.stub'			=> 'DummyHelpers.php',
-		'show.stub'				=> 'show.blade.php',
-		'edit.stub'				=> 'edit.blade.php',
-		'create.stub'			=> 'create.blade.php',
-		'destroy.stub'			=> 'destroy.blade.php'
+		'AdminController.stub' 					=> 'DummyAdminController.php',
+		'ApiController.stub' 					=> 'DummyApiController.php',
+		'Controller.stub' 						=> 'DummyController.php',
+		'Model.stub' 							=> 'Dummy.php',
+		'general.stub'							=> 'general.php',
+		'index.stub' 							=> 'index.blade.php',
+		'routes.stub'							=> 'routes.php',
+		'details.stub'							=> 'details.php',
+		'helper.stub'							=> 'DummyHelpers.php',
+		'show.stub'								=> 'show.blade.php',
+		'edit.stub'								=> 'edit.blade.php',
+		'create.stub'							=> 'create.blade.php',
+		'destroy.stub'							=> 'destroy.blade.php',
+		'2016_01_01_010101_Dummy.stub'			=> '2016_01_01_010101_Dummy.php'
 	];
 
 
