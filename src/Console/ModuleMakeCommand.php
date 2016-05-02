@@ -14,7 +14,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class ModuleMakeCommand extends GeneratorCommand {
 
-	protected $name = 'make:module';
+	protected $name = 'module:make';
 	protected $description = 'Create a new module';
 	protected $type = 'Module';
 
@@ -61,7 +61,10 @@ class ModuleMakeCommand extends GeneratorCommand {
 		'index.stub' 			=> 'index.blade.php',
 		'routes.stub'			=> 'routes.php',
 		'details.stub'			=> 'details.php',
-		'helper.stub'			=> 'DummyHelpers.php'
+		'helper.stub'			=> 'DummyHelpers.php',
+		'show.stub'				=> 'show.blade.php',
+		'edit.stub'				=> 'edit.blade.php',
+		'destroy.stub'			=> 'destroy.blade.php'
 	];
 
 

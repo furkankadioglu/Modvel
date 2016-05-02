@@ -88,6 +88,7 @@ class ModuleServiceProvider extends ServiceProvider {
 	public function register() {
 		$this->files = new Filesystem;
 		$this->registerMakeCommand();
+		$this->registerListCommand();
 	}
 
 	/**
@@ -101,6 +102,15 @@ class ModuleServiceProvider extends ServiceProvider {
 		$bind_method = method_exists($this->app, 'bindShared') ? 'bindShared' : 'singleton';
 		$this->app->{$bind_method}('modules.make', function($app) {
 			return new Console\ModuleMakeCommand($this->files);
+		});
+	}
+
+	public function registerListCommand() {
+		
+		$this->commands('modules.list');
+		$bind_method = method_exists($this->app, 'bindShared') ? 'bindShared' : 'singleton';
+		$this->app->{$bind_method}('modules.list', function($app) {
+			return new Console\ModuleListCommand($this->files);
 		});
 	}
 
