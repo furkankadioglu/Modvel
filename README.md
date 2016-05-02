@@ -31,6 +31,7 @@ php artisan vendor:publish
 - php artisan module:make [module name]
 - php artisan module:list 
 - php artisan module:migrate [module name]
+- php artisan module:migrateall
 
 ###### Publish Files
 

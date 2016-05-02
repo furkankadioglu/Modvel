@@ -90,6 +90,7 @@ class ModuleServiceProvider extends ServiceProvider {
 		$this->registerMakeCommand();
 		$this->registerListCommand();
 		$this->registerMigrateCommand();
+		$this->registerMigrateAllCommand();
 	}
 
 	/**
@@ -121,6 +122,15 @@ class ModuleServiceProvider extends ServiceProvider {
 		$bind_method = method_exists($this->app, 'bindShared') ? 'bindShared' : 'singleton';
 		$this->app->{$bind_method}('modules.migrate', function($app) {
 			return new Console\ModuleMigrateCommand($this->files);
+		});
+	}
+
+	public function registerMigrateAllCommand() {
+		
+		$this->commands('modules.migrateall');
+		$bind_method = method_exists($this->app, 'bindShared') ? 'bindShared' : 'singleton';
+		$this->app->{$bind_method}('modules.migrateall', function($app) {
+			return new Console\ModuleMigrateAllCommand($this->files);
 		});
 	}
 
