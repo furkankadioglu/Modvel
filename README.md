@@ -80,15 +80,20 @@ laravel-project/
             |-- Config/
             |-- Resources/
                 |-- views/
-                    |-- admin
-                        |-- default
+                    |-- admin/
+                        |-- default/
                             |-- index.blade.php
-                    |-- default
+                            |-- show.blade.php
+                            |-- destroy.blade.php
+                            |-- edit.blade.php
+                            |-- create.blade.php
+                    |-- default/
                         |-- index.blade.php
+                        |-- show.blade.php
                 |-- lang/
-                    |-- en
+                    |-- en/
                         |-- general.php
-                    |-- tr
+                    |-- tr/
                         |-- general.php
             |-- Database/
                 |-- seeds/
