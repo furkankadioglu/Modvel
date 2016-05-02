@@ -4,7 +4,7 @@
     "keywords": ["laravel", "pattern", "modular", "modules", "structure", "Furkan", "Kadıoğlu", "l5module", "artisan", "generator"],
     "homepage": "https://github.com/furkankadioglu/Modvel",
     "license": "MIT",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "authors": [
         {
             "name": "Furkan Kadıoğlu",
