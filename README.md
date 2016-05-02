@@ -28,8 +28,9 @@ php artisan vendor:publish
 
 ### Commands
 
-- php artisan module:make
+- php artisan module:make [module name]
 - php artisan module:list 
+- php artisan module:migrate [module name]
 
 ###### Publish Files
 

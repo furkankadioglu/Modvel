@@ -29,8 +29,9 @@ php artisan vendor:publish
 
 ### Komutlar
 
-- php artisan module:make
+- php artisan module:make [module name]
 - php artisan module:list 
+- php artisan module:migrate [module name]
 
 ###### Publish ile hangi dosyalar geliyor?
 
