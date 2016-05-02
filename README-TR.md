@@ -100,6 +100,7 @@ laravel-project/
             |-- Database/
                 |-- seeds/
                 |-- migrations/
+                    |-- 2016_01_01_010101_Test.php
 
 ```
 
