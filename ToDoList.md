@@ -5,3 +5,5 @@
 - ~~Command: php artisan module:generate~~
 - ~~Command: php artisan module:migrate~~
 - ~~Database migration generator (with module)~~
+- Module db names str fix.
+- Admin template extends in admin folder.
