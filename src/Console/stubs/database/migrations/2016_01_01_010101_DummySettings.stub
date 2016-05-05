@@ -14,8 +14,10 @@ class DummySettings extends Migration
     {
         Schema::create('Dummy_settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('settingName');
-            $table->string('settingValue');
+            $table->string('name');
+            $table->string('displayName');
+            $table->string('attribute');
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }

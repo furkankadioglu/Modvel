@@ -1,7 +1,6 @@
 @extends('masters.admin')
 
 @section('content')
-{{ $headName }}
 
 @foreach($datas as $data)
 	{{ print_r($data) }}

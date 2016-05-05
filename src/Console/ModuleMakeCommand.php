@@ -54,10 +54,11 @@ class ModuleMakeCommand extends GeneratorCommand {
 	// File Replacement
 	public $fileRenameRules = [
 		'AdminController.stub' 					=> 'DummyAdminController.php',
+		'AdminSettingsController.stub' 			=> 'DummyAdminSettingsController.php',
 		'ApiController.stub' 					=> 'DummyApiController.php',
 		'Controller.stub' 						=> 'DummyController.php',
 		'Model.stub' 							=> 'Dummy.php',
-		'ModelSetting.stub' 					=> 'DummySetting.php',
+		'ModelModuleSetting.stub' 				=> 'DummyModuleSetting.php',
 		'general.stub'							=> 'general.php',
 		'index.stub' 							=> 'index.blade.php',
 		'routes.stub'							=> 'routes.php',

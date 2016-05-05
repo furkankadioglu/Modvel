@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use File;
 use Auth;
+use Cache;
 use Config;
 use App\BaseHelpers;
 

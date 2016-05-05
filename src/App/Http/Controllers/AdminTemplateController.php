@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use File;
 use Auth;
 use Config;
+use Cache;
 use App\BaseHelpers;
 
 abstract class AdminTemplateController extends BaseController

@@ -1,3 +1,9 @@
-@foreach($datas as $data)
-	{{ $data }}
-@endforeach
+@extends('masters.main')
+
+@section('content')
+
+	@foreach($datas as $data)
+		{{ $data }}
+	@endforeach
+
+@endsection

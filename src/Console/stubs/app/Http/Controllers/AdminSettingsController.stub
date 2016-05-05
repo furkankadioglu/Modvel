@@ -1,0 +1,97 @@
+<?php namespace App\Modules\Dummy\App\Http\Controllers;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+// Frameworks
+use File;
+use Auth;
+use Validator;
+use DB;
+use Config;
+
+// Helpers
+use App\Modules\Dummy\App\DummyHelpers as BaseHelpers;
+
+// Models
+use App\Modules\Dummy\App\Models\Dummy;
+use App\Modules\Dummy\App\Models\DummyModuleSetting;
+
+
+use App\Http\Controllers\AdminTemplateController;
+class DummyAdminSettingsController extends AdminTemplateController {
+
+	public $headName = "Dummy Module Settings";
+
+
+	public function index()
+	{
+		$datas = DummyModuleSetting::orderBy('id', 'desc')->get();
+		return view("Dummy::admin.default.settings.index")
+		->with('datas', $datas)
+		->with('headName', $this->headName);
+	}
+
+	public function create()
+	{
+		return view("Dummy::admin.default.settings.create")
+		->with('headName', $this->headName);
+	}
+
+	public function store(Request $request)
+	{
+		$postCategory = $request->get('postCategory');
+
+		if($postCategory == "create")
+		{
+			$rules = array(
+				'displayName' => 'required|max:255',
+				'name' => 'required|max:255',
+				'attribute' => 'required|max:255'
+			);
+
+			$validator = Validator::make($request->all(), $rules);
+
+			if($validator->fails()) 
+            {
+                return back();
+            }
+
+            $settingDisplayName = $request->get('displayName');
+            $settingName = $request->get('name');
+            $settingAttribute = $request->get('attribute');
+
+			$data = DummyModuleSetting::create([
+				'displayName' => $settingDisplayName,
+				'name' => $settingName,
+				'attribute' => $settingAttribute
+			]);
+
+            return redirect("admin/modules/Dummy/settings");
+		}
+
+		return back();
+	}
+
+	public function update(Request $request)
+	{
+		
+	}
+
+	public function destroy($id)
+	{
+		$data = DummyModuleSetting::find($id);
+		if($data != null)
+		{
+			$data->delete();
+			return view("Dummy::admin.default.settings.destroy")
+			->with('id', $id)
+			->with('headName', $this->headName);
+		}
+		return back();
+
+		
+	}
+
+}
