@@ -3,6 +3,7 @@
 return [
     'name' => 'Dummy',
     'displayName' => 'Dummy',
+    'adminDisplayName' => 'Dummy Management',
     'description' => '',
     'icon' => 'fa fa-get-pocket',
     'category' => 'General',
