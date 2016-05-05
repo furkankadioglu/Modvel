@@ -62,6 +62,7 @@ class ModuleServiceProvider extends ServiceProvider {
 			__DIR__.'/App/Http/Controllers/AdminController.php' => app_path('/Http/Controllers/AdminController.php'),
 			__DIR__.'/App/Http/Controllers/MainTemplateController.php' => app_path('/Http/Controllers/MainTemplateController.php'),
 			__DIR__.'/App/Http/Controllers/MainController.php' => app_path('/Http/Controllers/MainController.php'),
+			__DIR__.'/App/Http/Middleware/AdminMiddleware.php' => app_path('/Http/Middleware/AdminMiddleware.php'),
 			__DIR__.'/App/Models/Audio.php' => app_path('/Models/Audio.php'),
 			__DIR__.'/App/Models/Document.php' => app_path('/Models/Document.php'),
 			__DIR__.'/App/Models/Photo.php' => app_path('/Models/Photo.php'),
