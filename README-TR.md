@@ -54,6 +54,8 @@ laravel-project/
             |-- MainTemplateController.php
             |-- AdminController.php
             |-- MainController.php
+        |-- Middleware/
+            |-- AdminMiddleware.php
     resources/
     |-- views/
         |-- masters/
@@ -72,12 +74,14 @@ laravel-project/
             |-- details.php
             |-- App/
                 |-- Controllers/
+                    |-- TestAdminSettingsController.php
                     |-- TestAdminController.php
                     |-- TestApiController.php
                     |-- TestController.php
                 |-- Middlewares/
                 |-- Models/
                     |-- Test.php
+                    |-- TestModuleSetting.php
                 |-- routes.php
                 |-- TestHelpers.php
             |-- Config/
@@ -90,6 +94,10 @@ laravel-project/
                             |-- destroy.blade.php
                             |-- edit.blade.php
                             |-- create.blade.php
+                            |-- settings/
+                                |-- index.blade.php
+                                |-- create.blade.php
+                                |-- destroy.blade.php
                     |-- default/
                         |-- index.blade.php
                         |-- show.blade.php
