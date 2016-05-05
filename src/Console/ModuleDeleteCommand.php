@@ -27,8 +27,7 @@ class ModuleDeleteCommand extends Command {
 		$path = 'app/Modules/'.$this->moduleName;
 		$this->warn('+ Scanning module files.');
 
-		array_map('unlink', glob("$path/*.*"));
-		rmdir($path);
+		$this->deleteDir($path);
 
 		$this->info('* Module has been removed.');
 	}
@@ -44,6 +43,24 @@ class ModuleDeleteCommand extends Command {
 	{
 		return $this->argument($arg);
 	}
+
+	private function deleteDir($dirPath) {
+    if (! is_dir($dirPath)) {
+        throw new InvalidArgumentException("$dirPath must be a directory");
+    }
+    if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
+        $dirPath .= '/';
+    }
+    $files = glob($dirPath . '*', GLOB_MARK);
+    foreach ($files as $file) {
+        if (is_dir($file)) {
+            self::deleteDir($file);
+        } else {
+            unlink($file);
+        }
+    }
+    rmdir($dirPath);
+}
 
 
 }
