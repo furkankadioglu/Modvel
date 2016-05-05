@@ -109,5 +109,6 @@ laravel-project/
                 |-- seeds/
                 |-- migrations/
                     |-- 2016_01_01_010101_Test.php
+                    |-- 2016_01_01_010101_TestSettings.php
 
 ```
