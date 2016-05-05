@@ -11,6 +11,6 @@ class AdminController extends AdminTemplateController
 
     public function index()
     {
-    	return $this->modules;
+    	return "OKAY";
     }
 }
