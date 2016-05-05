@@ -33,6 +33,7 @@ php artisan vendor:publish
 - php artisan module:list 
 - php artisan module:migrate [module name]
 - php artisan module:migrateall
+- php artisan module:delete [module name]
 
 ###### Publish ile hangi dosyalar geliyor?
 
