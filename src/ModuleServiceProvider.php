@@ -92,6 +92,7 @@ class ModuleServiceProvider extends ServiceProvider {
 		$this->registerListCommand();
 		$this->registerMigrateCommand();
 		$this->registerMigrateAllCommand();
+		$this->registerDeleteCommand();
 	}
 
 	/**
@@ -135,7 +136,7 @@ class ModuleServiceProvider extends ServiceProvider {
 		});
 	}
 
-	public function registerRemoveCommand() {
+	public function registerDeleteCommand() {
 		
 		$this->commands('modules.delete');
 		$bind_method = method_exists($this->app, 'bindShared') ? 'bindShared' : 'singleton';
