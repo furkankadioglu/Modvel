@@ -135,4 +135,13 @@ class ModuleServiceProvider extends ServiceProvider {
 		});
 	}
 
+	public function registerRemoveCommand() {
+		
+		$this->commands('modules.delete');
+		$bind_method = method_exists($this->app, 'bindShared') ? 'bindShared' : 'singleton';
+		$this->app->{$bind_method}('modules.delete', function($app) {
+			return new Console\ModuleDeleteCommand($this->files);
+		});
+	}
+
 }
