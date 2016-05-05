@@ -21,11 +21,12 @@ Route::group(array('module' => 'Dummy', 'middleware' =>  ['web', 'auth'], 'names
     Route::get('/admin/modules/Dummy/settings/', array('uses' => 'DummyAdminSettingsController@index', 'as' => 'admin.Dummy.settings.index'));
 });	
 
+Route::group(array('module' => 'Dummy', 'middleware' =>  ['web', 'api'], 'namespace' => 'App\Modules\Dummy\App\Http\Controllers'), function() {
+    Route::resource('DummyAPI', 'DummyApiController');
+});
 
 Route::group(array('module' => 'Dummy', 'middleware' =>  ['web'], 'namespace' => 'App\Modules\Dummy\App\Http\Controllers'), function() {
 
 	// Dummy - Visitor
     Route::resource('Dummy', 'DummyController');
-    Route::resource('DummyAPI', 'DummyApiController');
-
 });	
