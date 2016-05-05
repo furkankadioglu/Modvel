@@ -6,7 +6,7 @@ class DummySetting extends Model {
 
 	//
 	protected $table = "Dummy_settings";
-	public $timestamps = true;
+	public $timestamps = false;
 	protected $guarded = [];
 
 }
