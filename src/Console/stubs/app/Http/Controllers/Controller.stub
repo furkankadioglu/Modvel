@@ -16,6 +16,7 @@ use App\Modules\Dummy\App\DummyHelpers as BaseHelpers;
 
 // Models
 use App\Modules\Dummy\App\Models\Dummy;
+use App\Modules\Dummy\App\Models\DummySetting;
 
 
 use App\Http\Controllers\MainTemplateController;
