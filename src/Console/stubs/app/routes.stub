@@ -2,6 +2,7 @@
 
 Route::group(array('module' => 'Dummy', 'middleware' =>  ['web', 'auth'], 'namespace' => 'App\Modules\Dummy\App\Http\Controllers'), function() {
 
+    // Dummy - Admin
     Route::post('/admin/modules/Dummy/', array('uses' => 'DummyAdminController@store', 'as' => 'admin.Dummy.store'));
     Route::put('/admin/modules/Dummy/{id}', array('uses' => 'DummyAdminController@update', 'as' => 'admin.Dummy.update'));
 
@@ -23,7 +24,7 @@ Route::group(array('module' => 'Dummy', 'middleware' =>  ['web', 'auth'], 'names
 
 Route::group(array('module' => 'Dummy', 'middleware' =>  ['web'], 'namespace' => 'App\Modules\Dummy\App\Http\Controllers'), function() {
 
-	// Resources
+	// Dummy - Visitor
     Route::resource('Dummy', 'DummyController');
     Route::resource('DummyAPI', 'DummyApiController');
 

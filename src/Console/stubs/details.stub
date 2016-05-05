@@ -10,7 +10,8 @@ return [
     'customer' => 'General',
     'adminNavigationLinks' => [
     	'Yeni' => '/create',
-    	'Listele' => '/'
+    	'Listele' => '/',
+        'Ayarlar' => '/settings/'
     ],
     'requiredModules' => [
 
