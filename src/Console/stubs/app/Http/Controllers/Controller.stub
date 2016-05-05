@@ -25,7 +25,7 @@ class DummyController extends MainTemplateController {
 	public function index()
 	{
 		$datas = Dummy::orderBy('id', 'desc')->get();
-		return view("Dummy::default.index")
+		return view("Dummy::".$this->theme.".index")
 		->with('datas', $datas);
 	}
 
@@ -34,7 +34,7 @@ class DummyController extends MainTemplateController {
 		$data = Dummy::find($id);
 		if($data != null)
 		{
-			return view("Dummy::default.show")
+			return view("Dummy::".$this->theme.".show")
 			->with('id', $id)
 			->with('data', $data);	
 		}
@@ -48,7 +48,7 @@ class DummyController extends MainTemplateController {
 
 	public function destroy($id)
 	{
-		return view("Dummy::default.destroy")
+		return view("Dummy::".$this->theme.".destroy")
 		->with('id', $id);
 	}
 

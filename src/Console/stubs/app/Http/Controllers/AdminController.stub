@@ -32,7 +32,7 @@ class DummyAdminController extends AdminTemplateController {
 	public function index()
 	{
 		$datas = Dummy::orderBy('id', 'desc')->get();
-		return view("Dummy::admin.default.index")
+		return view("Dummy::admin.".$this->theme.".index")
 		->with('datas', $datas)
 		->with('headName', $this->headName);
 	}
@@ -44,7 +44,7 @@ class DummyAdminController extends AdminTemplateController {
 	 */
 	public function create()
 	{
-		return view("Dummy::admin.default.create")
+		return view("Dummy::admin.".$this->theme.".create")
 		->with('headName', $this->headName);
 	}
 
@@ -91,7 +91,7 @@ class DummyAdminController extends AdminTemplateController {
 		$data = Dummy::find($id);
 		if($data != null)
 		{
-			return view("Dummy::admin.default.show")
+			return view("Dummy::admin.".$this->theme.".show")
 			->with('id', $id)
 			->with('data', $data)
 			->with('headName', $this->headName);
@@ -110,7 +110,7 @@ class DummyAdminController extends AdminTemplateController {
 		$data = Dummy::find($id);
 		if($data != null)
 		{
-			return view("Dummy::admin.default.edit")
+			return view("Dummy::admin.".$this->theme.".edit")
 			->with('id', $id)
 			->with('data', $data)
 			->with('headName', $this->headName);
@@ -160,7 +160,7 @@ class DummyAdminController extends AdminTemplateController {
 		if($data != null)
 		{
 			$data->delete();
-			return view("Dummy::admin.default.destroy")
+			return view("Dummy::admin.".$this->theme.".destroy")
 			->with('id', $id)
 			->with('headName', $this->headName);
 		}

@@ -28,14 +28,14 @@ class DummyAdminSettingsController extends AdminTemplateController {
 	public function index()
 	{
 		$datas = DummyModuleSetting::orderBy('id', 'desc')->get();
-		return view("Dummy::admin.default.settings.index")
+		return view("Dummy::admin.".$this->theme.".settings.index")
 		->with('datas', $datas)
 		->with('headName', $this->headName);
 	}
 
 	public function create()
 	{
-		return view("Dummy::admin.default.settings.create")
+		return view("Dummy::admin.".$this->theme.".settings.create")
 		->with('headName', $this->headName);
 	}
 
@@ -85,7 +85,7 @@ class DummyAdminSettingsController extends AdminTemplateController {
 		if($data != null)
 		{
 			$data->delete();
-			return view("Dummy::admin.default.settings.destroy")
+			return view("Dummy::admin.".$this->theme.".settings.destroy")
 			->with('id', $id)
 			->with('headName', $this->headName);
 		}
