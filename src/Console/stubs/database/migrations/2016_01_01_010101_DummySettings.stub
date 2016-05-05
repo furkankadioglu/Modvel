@@ -18,7 +18,6 @@ class DummySettings extends Migration
             $table->string('displayName');
             $table->string('attribute');
             $table->string('value')->nullable();
-            $table->timestamps();
         });
     }
 
