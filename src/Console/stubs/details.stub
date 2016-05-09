@@ -24,6 +24,7 @@ return [
     // Admin
 
     'adminDisplayName' => 'Dummy Management',
+    'adminVisible' => 1,
     'adminDisplayOrder' => 0,
     'adminNavigationLinks' => [
     	'Yeni' => '/create',
@@ -34,6 +35,7 @@ return [
     // Visitor
 
     'displayName' => 'Dummy',
+    'displayVisible' => 1,
     'displayOrder' => 0,
     'displayNavigationLinks' => [
 
