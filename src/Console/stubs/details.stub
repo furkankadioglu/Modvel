@@ -1,21 +1,43 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+|
+|   Dummy Module
+|
+|--------------------------------------------------------------------------
+*/
 
 return [
+
+    // General
+    
     'name' => 'Dummy',
-    'displayName' => 'Dummy',
-    'adminDisplayName' => 'Dummy Management',
     'description' => '',
-    'icon' => 'fa fa-get-pocket',
-    'category' => 'General',
     'creator' => 'Anonymous',
+    'category' => 'General',
     'customer' => 'General',
+    'icon' => 'fa fa-get-pocket',
+    'requiredModules' => [
+
+    ],
+
+    // Admin
+
+    'adminDisplayName' => 'Dummy Management',
+    'adminDisplayOrder' => 0,
     'adminNavigationLinks' => [
     	'Yeni' => '/create',
     	'Listele' => '/',
         'Ayarlar' => '/settings/'
     ],
-    'requiredModules' => [
+    
+    // Visitor
 
-    ]
+    'displayName' => 'Dummy',
+    'displayOrder' => 0,
+    'displayNavigationLinks' => [
+
+    ],
+
 
 ];
