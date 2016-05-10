@@ -36,7 +36,7 @@ class ModuleMakeCommand extends GeneratorCommand {
 		'Resources' => 	[
 			'views' => 	[
 				'admin'	=>	[
-					'default'	=>	[]
+					'default'	=>	['settings']
 					],
 					'default'	=> 	[]
 			],
@@ -66,6 +66,7 @@ class ModuleMakeCommand extends GeneratorCommand {
 		'helper.stub'							=> 'DummyHelpers.php',
 		'show.stub'								=> 'show.blade.php',
 		'edit.stub'								=> 'edit.blade.php',
+		'navigation.stub'						=> 'navigation.blade.php',
 		'create.stub'							=> 'create.blade.php',
 		'destroy.stub'							=> 'destroy.blade.php',
 		'2016_01_01_010101_Dummy.stub'			=> '2016_01_01_010101_Dummy.php',
