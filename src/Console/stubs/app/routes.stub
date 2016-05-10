@@ -2,6 +2,14 @@
 
 Route::group(array('module' => 'Dummy', 'middleware' =>  ['web', 'auth'], 'namespace' => 'App\Modules\Dummy\App\Http\Controllers'), function() {
 
+    // Dummy - Settings
+    Route::put('/admin/modules/Dummy/settings/', array('uses' => 'DummyAdminSettingsController@update', 'as' => 'admin.Dummy.settings.update'));
+    Route::post('/admin/modules/Dummy/settings/', array('uses' => 'DummyAdminSettingsController@store', 'as' => 'admin.Dummy.settings.store'));
+
+    Route::get('/admin/modules/Dummy/settings/{id}/delete', array('uses' => 'DummyAdminSettingsController@destroy', 'as' => 'admin.Dummy.settings.destroy'));
+    Route::get('/admin/modules/Dummy/settings/create', array('uses' => 'DummyAdminSettingsController@create', 'as' => 'admin.Dummy.settings.create'));
+    Route::get('/admin/modules/Dummy/settings/', array('uses' => 'DummyAdminSettingsController@index', 'as' => 'admin.Dummy.settings.index'));
+
     // Dummy - Admin
     Route::post('/admin/modules/Dummy/', array('uses' => 'DummyAdminController@store', 'as' => 'admin.Dummy.store'));
     Route::put('/admin/modules/Dummy/{id}', array('uses' => 'DummyAdminController@update', 'as' => 'admin.Dummy.update'));
@@ -11,14 +19,6 @@ Route::group(array('module' => 'Dummy', 'middleware' =>  ['web', 'auth'], 'names
     Route::get('/admin/modules/Dummy/{id}/edit', array('uses' => 'DummyAdminController@edit', 'as' => 'admin.Dummy.edit'));
     Route::get('/admin/modules/Dummy/create', array('uses' => 'DummyAdminController@create', 'as' => 'admin.Dummy.create'));
     Route::get('/admin/modules/Dummy/{id}', array('uses' => 'DummyAdminController@show', 'as' => 'admin.Dummy.show'));
-
-    // Dummy - Settings
-    Route::put('/admin/modules/Dummy/settings/', array('uses' => 'DummyAdminSettingsController@update', 'as' => 'admin.Dummy.settings.update'));
-    Route::post('/admin/modules/Dummy/settings/', array('uses' => 'DummyAdminSettingsController@store', 'as' => 'admin.Dummy.settings.store'));
-
-    Route::get('/admin/modules/Dummy/settings/{id}/delete', array('uses' => 'DummyAdminSettingsController@destroy', 'as' => 'admin.Dummy.settings.destroy'));
-    Route::get('/admin/modules/Dummy/settings/create', array('uses' => 'DummyAdminSettingsController@create', 'as' => 'admin.Dummy.settings.create'));
-    Route::get('/admin/modules/Dummy/settings/', array('uses' => 'DummyAdminSettingsController@index', 'as' => 'admin.Dummy.settings.index'));
 });	
 
 Route::group(array('module' => 'Dummy', 'middleware' =>  ['web', 'api'], 'namespace' => 'App\Modules\Dummy\App\Http\Controllers'), function() {
