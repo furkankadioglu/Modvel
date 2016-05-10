@@ -12,7 +12,7 @@ use DB;
 use Config;
 
 // Helpers
-use App\Modules\Dummy\App\DummyHelpers as BaseHelpers;
+use App\Modules\Dummy\App\DummyHelpers as ModuleHelpers;
 
 // Models
 use App\Modules\Dummy\App\Models\Dummy;
