@@ -162,7 +162,7 @@ class ModuleMakeCommand extends GeneratorCommand {
 	protected function getOptions()
 	{
 		return array(
-			['path', InputOption::VALUE_OPTIONAL, 'Stub path'],
+			['path', null, InputOption::VALUE_OPTIONAL, 'Stub path'],
 		);
 	}
 
