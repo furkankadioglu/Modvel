@@ -8,4 +8,4 @@
 
 @yield('modals')
 
-@yield('scripts')
+@yield('scripts'')
