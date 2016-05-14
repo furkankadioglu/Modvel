@@ -20,6 +20,9 @@ return [
     'requiredModules' => [
 
     ],
+    'requiredPackages' => [
+    
+    ],
 
     // Admin
 
