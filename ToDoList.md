@@ -7,4 +7,4 @@
 - ~~Database migration generator (with module)~~
 - Module db names str fix.
 - Admin template extends in admin folder.
-- Stubs path selection
+- ~~Stubs path selection~~

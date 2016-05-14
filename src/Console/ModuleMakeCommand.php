@@ -22,6 +22,7 @@ class ModuleMakeCommand extends GeneratorCommand {
 	public $modulesPath = "";
 	public $modulePath = "";
 	public $modulePathFolder = "";
+	public $optionalStubPath = "";
 
 	// Generate - Folders
 	public $folders = [
@@ -36,7 +37,9 @@ class ModuleMakeCommand extends GeneratorCommand {
 		'Resources' => 	[
 			'views' => 	[
 				'admin'	=>	[
-					'default'	=>	['settings']
+					'default'	=>	[
+							'settings' => [],
+						]
 					],
 					'default'	=> 	[]
 			],
@@ -87,6 +90,11 @@ class ModuleMakeCommand extends GeneratorCommand {
 			return $this->error($this->type.' already exists!');
 		} 
 
+		// Path
+		$this->optionalStubPath = $this->option('stubPath');
+
+
+
 		$this->generateFolder($this->folders, $this->moduleName, "", null);
 
 		$this->info('* '.$this->moduleName.' module created successfully.');
@@ -102,8 +110,21 @@ class ModuleMakeCommand extends GeneratorCommand {
 
 
 			$mPath = app_path().'/Modules/'.$moduleName.'/';
-			$stubPath = __DIR__.'/stubs/'.$path.$basefolder;
-			$stubPathDirectory = __DIR__.'/stubs/';
+			
+
+
+			if($this->optionalStubPath != "")
+			{
+				//$stubPath = __DIR__.'/stubs/'.$path.$basefolder;
+				//$stubPathDirectory = __DIR__.'/stubs/';
+				$stubPath = resource_path("stubs/".$this->optionalStubPath.'/stubs/'.$path.$basefolder);
+				$stubPathDirectory = resource_path("stubs/".$this->optionalStubPath.'/stubs/');
+			}
+			else
+			{
+				$stubPath = __DIR__.'/stubs/'.$path.$basefolder;
+				$stubPathDirectory = __DIR__.'/stubs/';
+			}
 
 			// Module Files
 			foreach((array)$this->findFiles($stubPathDirectory) as $file)
@@ -162,7 +183,7 @@ class ModuleMakeCommand extends GeneratorCommand {
 	protected function getOptions()
 	{
 		return array(
-			['path', null, InputOption::VALUE_OPTIONAL, 'Stub path'],
+			['stubPath', null, InputOption::VALUE_OPTIONAL, 'Stub path'],
 		);
 	}
 
