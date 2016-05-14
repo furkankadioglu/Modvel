@@ -20,6 +20,19 @@ class ModuleServiceProvider extends ServiceProvider {
 	 *
 	 * @return void
 	 */
+
+	// Publish - Folders
+	public $publishFolders = [
+		'assets',
+		'uploads',
+		'uploads/photos',
+		'uploads/videos',
+		'uploads/audios',
+		'uploads/files',
+		'uploads/documents'
+	];
+
+
 	public function boot() {
 
 		if(is_dir(app_path().'/Modules/')) 
@@ -79,6 +92,14 @@ class ModuleServiceProvider extends ServiceProvider {
 
 		], 'resources');
 
+		//	Publish Folders Generate
+		foreach((array)$this->publishFolders as $pf)
+		{
+			if (!file_exists(public_path($pf))) 
+			{
+		    	mkdir(public_path($pf), 0777, true);
+			}
+		}
 	}
 
 	/**

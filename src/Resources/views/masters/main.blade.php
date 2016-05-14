@@ -6,6 +6,4 @@
 
 @yield('content')
 
-@yield('modals')
-
 @yield('scripts')
