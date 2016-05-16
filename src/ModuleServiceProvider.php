@@ -89,6 +89,7 @@ class ModuleServiceProvider extends ServiceProvider {
 		$this->publishes([
 			__DIR__.'/Resources/views/masters/main.blade.php' => resource_path('/views/masters/main.blade.php'),
 			__DIR__.'/Resources/views/masters/admin.blade.php' => resource_path('/views/masters/admin.blade.php'),
+			__DIR__.'/Resources/views/masters/mail.blade.php' => resource_path('/views/masters/mail.blade.php'),
 
 		], 'resources');
 
