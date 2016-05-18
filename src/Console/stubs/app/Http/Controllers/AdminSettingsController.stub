@@ -10,8 +10,10 @@ use Auth;
 use Validator;
 use DB;
 use Config;
+use Cache;
 
 // Helpers
+use App\BaseHelpers;
 use App\Modules\Dummy\App\DummyHelpers as ModuleHelpers;
 
 // Models
@@ -47,7 +49,7 @@ class DummyAdminSettingsController extends AdminTemplateController {
 		{
 			$rules = array(
 				'displayName' => 'required|max:255',
-				'name' => 'required|max:255',
+				'name' => 'required|unique:Dummy_settings|max:255',
 				'attribute' => 'required|max:255'
 			);
 
@@ -55,11 +57,11 @@ class DummyAdminSettingsController extends AdminTemplateController {
 
 			if($validator->fails()) 
             {
-                return back();
+				return back()->withErrors($validator);
             }
 
             $settingDisplayName = $request->get('displayName');
-            $settingName = $request->get('name');
+            $settingName = str_slug($request->get('name'));
             $settingAttribute = $request->get('attribute');
 
 			$data = DummyModuleSetting::create([
@@ -67,6 +69,8 @@ class DummyAdminSettingsController extends AdminTemplateController {
 				'name' => $settingName,
 				'attribute' => $settingAttribute
 			]);
+
+			$withCache = BaseHelpers::cacheAddOrUpdate("Dummy" ,$settingName, "");
 
             return redirect("admin/modules/Dummy/settings");
 		}
@@ -76,7 +80,14 @@ class DummyAdminSettingsController extends AdminTemplateController {
 
 	public function update(Request $request)
 	{
-		
+		$settings = DummyModuleSetting::orderBy('id', 'desc')->get();
+		foreach($settings as $setting)
+		{
+			$setting->value = $request->get($setting->name);
+			$setting->save();
+			$withCache = BaseHelpers::cacheAddOrUpdate("Dummy", $setting->name, $setting->value);
+		}
+           return redirect("admin/modules/Dummy/settings");
 	}
 
 	public function destroy($id)
@@ -85,9 +96,7 @@ class DummyAdminSettingsController extends AdminTemplateController {
 		if($data != null)
 		{
 			$data->delete();
-			return view("Dummy::admin.".$this->theme.".settings.destroy")
-			->with('id', $id)
-			->with('headName', $this->headName);
+			Cache::pull("DummyModule-".$data->name);
 		}
 		return back();
 

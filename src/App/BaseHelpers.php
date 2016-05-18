@@ -15,6 +15,38 @@ use Zipper;
 
 class BaseHelpers {
 
+
+	public static function cacheAddOrUpdate($module, $name, $val)
+	{
+		if($name != null)
+		{
+			$cache = Cache::get($module."Module-".$name);
+			if(Cache::has($module."Module-".$name))
+			{
+				Cache::pull($module."Module-".$name);
+				Cache::forever($module."Module-".$name, $val);
+			}
+			else
+			{
+				Cache::forever($module."Module-".$name, $val);
+			}
+		}
+		else
+		{
+			$cache = Cache::get($module."Module");
+			if(Cache::has($module."Module"))
+			{
+				Cache::pull($module."Module");
+				Cache::forever($module."Module", $val);
+			}
+			else
+			{
+				Cache::forever($module."Module", $val);
+			}
+		}
+		
+	}
+
 	public static function checkBaseModules()
 	{
 		
@@ -88,7 +120,11 @@ class BaseHelpers {
 					$modules[$directory] = BaseHelpers::readModule($directory);
 					$category = $modules[$directory]["category"];
 					$results[$category][$directory] = $modules[$directory];
-					//array_push($results[$category], $modules[$directory]);
+
+					if(isset($modules[$directory]["name"]))
+					{
+						BaseHelpers::cacheAddOrUpdate($modules[$directory]["name"], null, 1);
+					}
 		     	}
 		     	if($modules == "[]")
 		     	{
