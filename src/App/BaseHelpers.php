@@ -348,5 +348,32 @@ class BaseHelpers {
 			return $mediaCreate;
 		}
 	}
+		public static function addFile($data, $relationshipId = null, $categoryName = null, $displayName = null)
+	{
+		if(!is_null($data))
+		{	
+			$time = Carbon\Carbon::now()->timestamp;
+			$extension = $data->getClientOriginalExtension();
+			$mediaName = ($time.rand(5, 200000));
+			$fileName = $mediaName.".".$extension;
+			$data->move(public_path().'/uploads/files/', $fileName);
+			if(is_null($displayName))
+			{
+				$displayName = $mediaName;
+			}
+			if(is_null($relationshipId))
+			{
+				$relationshipId = 0;
+			}
+			$mediaCreate = UploadedFile::create([
+				'displayName' => $displayName,
+				'fileName' => $fileName,
+				'categoryName' => $categoryName,
+				'relId' => $relationshipId
+			]);
+
+			return $mediaCreate;
+		}
+	}
 
 }
