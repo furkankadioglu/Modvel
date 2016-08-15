@@ -226,7 +226,7 @@ class BaseHelpers {
 
 	public static function addPhoto($data, $relationshipId = null, $categoryName = null, $displayName = null)
 	{
-		$pixelFormats = [350,300,200,125, 75, 25];
+		$pixelFormats = [980, 750, 500, 350,300,200,125, 75, 25];
 		if(!is_null($data))
 		{	
 			$time = Carbon\Carbon::now()->timestamp;
@@ -242,7 +242,7 @@ class BaseHelpers {
 				{
 					$constraint->aspectRatio();
 				});
-				$media->save(public_path().'/uploads/photos/'.$format.'px_'.$fileName, 60);
+				$media->save(public_path().'/uploads/photos/'.$format.'px_'.$fileName, 100);
 			}
 
 
