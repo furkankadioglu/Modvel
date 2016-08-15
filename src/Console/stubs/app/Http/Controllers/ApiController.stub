@@ -18,7 +18,8 @@ use App\Modules\Dummy\App\DummyHelpers as ModuleHelpers;
 use App\Modules\Dummy\App\Models\Dummy;
 use App\Modules\Dummy\App\Models\DummyModuleSetting;
 
-class DummyApiController extends Controller {
+use App\Http\Controllers\ApiTemplateController;
+class DummyApiController extends ApiTemplateController {
 
 	public function index()
 	{
