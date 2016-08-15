@@ -11,6 +11,5 @@ class AdminController extends AdminTemplateController
 
     public function index()
     {
-    	return "OKAY";
     }
 }

@@ -11,6 +11,5 @@ class MainController extends MainTemplateController
 {
     public function index()
     {
-    	return "OKAY";
     }
 }
