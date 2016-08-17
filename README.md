@@ -32,19 +32,11 @@ php artisan vendor:publish
 
 - php artisan module:make [module name]
 
-![alt tag](http://2.1m.yt/bN-IPyH.png)
-
 - php artisan module:list 
-
-![alt tag](http://2.1m.yt/C1hi4p_.png)
 
 - php artisan module:migrate [module name]
 
-![alt tag](http://1.1m.yt/d9LwBhW.png)
-
 - php artisan module:migrateall
-
-![alt tag](http://2.1m.yt/R3Th887.png)
 
 - php artisan module:delete [module name]
 
