@@ -28,8 +28,6 @@ php artisan vendor:publish
 
 ### Commands
 
-![alt tag](http://3.1m.yt/FbJ6znM.png)
-
 - php artisan module:make [module name]
 
 - php artisan module:list 
