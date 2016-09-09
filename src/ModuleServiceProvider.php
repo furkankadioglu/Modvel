@@ -82,6 +82,7 @@ class ModuleServiceProvider extends ServiceProvider {
 			__DIR__.'/App/Models/UploadedFile.php' => app_path('/Models/UploadedFile.php'),
 			__DIR__.'/App/Models/Video.php' => app_path('/Models/Video.php'),
 			__DIR__.'/App/BaseHelpers.php' => app_path('BaseHelpers.php'),
+			__DIR__.'/App/Modules/Modvel' => app_path('/Modules/Modvel'),
 		], 'app');
 
 
