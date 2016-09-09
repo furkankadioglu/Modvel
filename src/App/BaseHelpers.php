@@ -13,7 +13,31 @@ use App\Models\Audio;
 use App\Models\UploadedFile;
 use Zipper;
 
+
+use App\Modules\Modvel\App\Models\ModvelModule;
+use App\Modules\Modvel\App\Models\ModvelModuleDetail;
+
 class BaseHelpers {
+
+	public static function getAllModules()
+	{
+		return ModvelModule::get();
+	}
+
+	public static function getAdminModuleCategories()
+	{
+		return ModvelModule::groupBy('category')->get(['category']);
+	}
+
+	public static function getModuleDetails($id)
+	{
+		return ModvelModuleDetail::where('moduleId', $id)->get();
+	}
+
+	public static function getSameModuleCategory($categoryName)
+	{
+		return ModvelModule::where('category', $categoryName)->get(["category"]);
+	}
 
 
 	public static function cacheAddOrUpdate($module, $name, $val)
@@ -226,7 +250,7 @@ class BaseHelpers {
 
 	public static function addPhoto($data, $relationshipId = null, $categoryName = null, $displayName = null)
 	{
-		$pixelFormats = [980, 750, 500, 350,300,200,125, 75, 25];
+		$pixelFormats = [350,300,200,125, 75, 25];
 		if(!is_null($data))
 		{	
 			$time = Carbon\Carbon::now()->timestamp;
@@ -242,7 +266,7 @@ class BaseHelpers {
 				{
 					$constraint->aspectRatio();
 				});
-				$media->save(public_path().'/uploads/photos/'.$format.'px_'.$fileName, 100);
+				$media->save(public_path().'/uploads/photos/'.$format.'px_'.$fileName, 60);
 			}
 
 
@@ -339,33 +363,6 @@ class BaseHelpers {
 				$relationshipId = 0;
 			}
 			$mediaCreate = Document::create([
-				'displayName' => $displayName,
-				'fileName' => $fileName,
-				'categoryName' => $categoryName,
-				'relId' => $relationshipId
-			]);
-
-			return $mediaCreate;
-		}
-	}
-		public static function addFile($data, $relationshipId = null, $categoryName = null, $displayName = null)
-	{
-		if(!is_null($data))
-		{	
-			$time = Carbon\Carbon::now()->timestamp;
-			$extension = $data->getClientOriginalExtension();
-			$mediaName = ($time.rand(5, 200000));
-			$fileName = $mediaName.".".$extension;
-			$data->move(public_path().'/uploads/files/', $fileName);
-			if(is_null($displayName))
-			{
-				$displayName = $mediaName;
-			}
-			if(is_null($relationshipId))
-			{
-				$relationshipId = 0;
-			}
-			$mediaCreate = UploadedFile::create([
 				'displayName' => $displayName,
 				'fileName' => $fileName,
 				'categoryName' => $categoryName,
