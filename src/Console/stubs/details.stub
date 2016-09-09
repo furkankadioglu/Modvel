@@ -17,6 +17,7 @@ return [
     'category' => 'General',
     'customer' => 'General',
     'icon' => 'fa fa-get-pocket',
+    'version' => '1.0.0',
     'optionalModules' => [
 
     ],
